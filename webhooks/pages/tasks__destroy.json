@@ -1,0 +1,18 @@
+{
+  "tasks": {
+    "method": "get",
+    "url": "{{ url }}/tasks/{{ _id }}.json",
+    "headers": {
+      "Authorization": "{{ token }}",
+      "Content-Type": "application/json"
+    }
+  },
+  "destroy_task": {
+    "method": "delete",
+    "url": "{{ url }}/tasks/{{ _id }}",
+    "headers": {
+      "Authorization": "{{ token }}",
+      "Content-Type": "application/json"
+    }
+  }
+}

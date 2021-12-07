@@ -1,0 +1,7 @@
+{
+  "en": {
+    "not_found": "The task was not found",
+    "destroyed": "You have destroyed the task",
+    "not_destroyed": "The task could not be destroyed"
+  }
+}

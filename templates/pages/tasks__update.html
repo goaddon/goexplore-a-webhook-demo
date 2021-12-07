@@ -1,0 +1,20 @@
+{% if account != nil %}
+
+  {% assign tasks_response   = "tasks" | webhook: url: project.secrets.api_url, token: account._id, _id: params.id %}
+
+  {% if tasks_response.code != 200 %}
+    flashAlert("error", "{{ l.not_found }}");
+  {% else %}
+    {% assign task = tasks_response.body %}
+    {% if task.name == params.name %}
+      flashAlert("message", "{{ l.not_updated }}");
+    {% else %}
+      {% assign tasks_update = "update_task" | webhook: url: project.secrets.api_url, token: account._id, _id: params.id, name: params.name %}
+      {% if tasks_update.code != 200 %}
+        flashAlert("error", "{{ l.unknown_error }}");
+      {% else %}
+        flashAlert("success", "{{ l.updated }}");
+      {% endif %}
+    {% endif %}
+  {% endif %}
+{% endif %}

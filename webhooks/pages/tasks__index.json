@@ -1,0 +1,10 @@
+{
+  "tasks": {
+    "method": "get",
+    "url": "{{ url }}/tasks.json",
+    "headers": {
+      "Authorization": "{{ token }}",
+      "Content-Type": "application/json"
+    }
+  }
+}

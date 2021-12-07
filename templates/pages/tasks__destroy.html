@@ -1,0 +1,19 @@
+{% if account != nil %}
+
+  {% assign tasks_response   = "tasks" | webhook: url: project.secrets.api_url, token: account._id, _id: params.id %}
+
+  {% if tasks_response.code != 200 %}
+    flashAlert("error", "{{ l.not_found }}");
+  {% else %}
+    {% assign tasks_deletion = "destroy_task" | webhook: url: project.secrets.api_url, token: account._id, _id: params.id %}
+
+    {% if tasks_deletion.code != 200 %}
+      flashAlert("error", "{{ l.not_destroyed }}");
+    {% else %}
+      var task = $('[data-id="' + "{{ params.id }}" + '"]');
+      task.prev("hr").remove();
+      task.remove();
+      flashAlert("message", "{{ l.destroyed }}");
+    {% endif %}
+  {% endif %}
+{% endif %}

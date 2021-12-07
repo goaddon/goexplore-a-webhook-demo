@@ -1,0 +1,15 @@
+{
+  "create_task": {
+    "method": "post",
+    "url": "{{ url }}/tasks.json",
+    "headers": {
+      "Authorization": "{{ token }}",
+      "Content-Type": "application/json"
+    },
+    "body": {
+      "_id": "{{ _id }}",
+      "name": "{{ name }}",
+      "company_id": "{{ company_id }}"
+    }
+  }
+}
