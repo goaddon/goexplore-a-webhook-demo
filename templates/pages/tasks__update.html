@@ -1,6 +1,6 @@
 {% if account != nil %}
 
-  {% assign tasks_response   = "tasks" | webhook: url: project.secrets.api_url, token: account._id, _id: params.id %}
+  {% assign tasks_response = "tasks" | webhook: url: project.secrets.api_url, token: account._id, _id: params.id %}
 
   {% if tasks_response.code != 200 %}
     flashAlert("error", "{{ l.not_found }}");

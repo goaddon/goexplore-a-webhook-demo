@@ -3,9 +3,11 @@
   {% assign tasks_response  = "tasks" | webhook: url: project.secrets.api_url, token: account._id %}
 
   {% if tasks_response.code != 200 %}
+
     <h5 class="mb-3">{{ l.not_found }}</h5>
   {% else %}
-    {% assign tasks = tasks_response.body %}
+
+    {% assign tasks = tasks_response.body.tasks %}
 
     {% include "tasks" %}
 

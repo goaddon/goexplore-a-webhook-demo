@@ -5,7 +5,7 @@
   {% if tasks_response.code != 200 %}
     <h5 class="mb-3">{{ l.not_found }}</h5>
   {% else %}
-    {% assign task = tasks_response.body %}
+    {% assign task = tasks_response.body.task %}
 
     {% include "task" %}
 
